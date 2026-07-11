@@ -5,7 +5,7 @@ Thanks for considering a contribution to NEXUS (TrustGeeks Security).
 ## Development setup
 
 ```bash
-git clone https://github.com/trustgeeks/nexus.git
+git clone https://github.com/samthehackers/NEXUS.git
 cd nexus
 pip install -e ".[dev]"
 pytest
