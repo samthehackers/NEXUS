@@ -5,7 +5,7 @@
 If you discover a security vulnerability in NEXUS, please report it
 privately rather than opening a public issue:
 
-- Email: **security@trustgeeks.io**
+- Email: ****
 - Include: affected version, reproduction steps, and potential impact.
 
 We aim to acknowledge reports within 72 hours and to provide a remediation
