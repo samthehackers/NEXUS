@@ -57,7 +57,7 @@ using transparent, explainable heuristics rather than a black box.
 ## Installation
 
 ```bash
-git clone https://github.com/trustgeeks/nexus.git
+git clone https://github.com/samthehackers/NEXUS.git
 cd nexus
 pip install -e ".[dev]"
 ```
