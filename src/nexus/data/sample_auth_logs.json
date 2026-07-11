@@ -1,0 +1,22 @@
+[
+  {"event_id": "e1", "user": "jane.doe", "timestamp": "2026-07-09T08:00:00Z", "action": "login", "country": "NG", "source_ip": "102.89.0.1", "host": "vpn-gw-1", "success": true},
+  {"event_id": "e2", "user": "jane.doe", "timestamp": "2026-07-09T08:20:00Z", "action": "login", "country": "DE", "source_ip": "45.10.0.9", "host": "vpn-gw-2", "success": true},
+  {"event_id": "e3", "user": "mark.admin", "timestamp": "2026-07-09T02:15:00Z", "action": "sudo su root", "country": "US", "host": "db-prod-01", "success": true},
+  {"event_id": "e4", "user": "mark.admin", "timestamp": "2026-07-09T02:20:00Z", "action": "attachPolicy AdministratorAccess", "country": "US", "host": "db-prod-01", "success": true},
+  {"event_id": "e5", "user": "mark.admin", "timestamp": "2026-07-09T02:25:00Z", "action": "assumeRole cross-account-admin", "country": "US", "host": "db-prod-01", "success": true},
+  {"event_id": "e6", "user": "svc.backup", "timestamp": "2026-07-09T14:00:00Z", "action": "read", "resource": "file-001", "host": "fileserver-1"},
+  {"event_id": "e7", "user": "svc.backup", "timestamp": "2026-07-09T14:01:00Z", "action": "read", "resource": "file-002", "host": "fileserver-1"},
+  {"event_id": "e8", "user": "svc.backup", "timestamp": "2026-07-09T14:02:00Z", "action": "read", "resource": "file-003", "host": "fileserver-1"},
+  {"event_id": "e9", "user": "svc.backup", "timestamp": "2026-07-09T14:02:30Z", "action": "read", "resource": "file-004", "host": "fileserver-1"},
+  {"event_id": "e10", "user": "svc.backup", "timestamp": "2026-07-09T14:03:00Z", "action": "read", "resource": "file-005", "host": "fileserver-1"},
+  {"event_id": "e11", "user": "svc.backup", "timestamp": "2026-07-09T14:03:30Z", "action": "read", "resource": "file-006", "host": "fileserver-1"},
+  {"event_id": "e12", "user": "svc.backup", "timestamp": "2026-07-09T14:04:00Z", "action": "read", "resource": "file-007", "host": "fileserver-1"},
+  {"event_id": "e13", "user": "svc.backup", "timestamp": "2026-07-09T14:04:30Z", "action": "read", "resource": "file-008", "host": "fileserver-1"},
+  {"event_id": "e14", "user": "svc.backup", "timestamp": "2026-07-09T14:05:00Z", "action": "read", "resource": "file-009", "host": "fileserver-1"},
+  {"event_id": "e15", "user": "svc.backup", "timestamp": "2026-07-09T14:05:30Z", "action": "read", "resource": "file-010", "host": "fileserver-1"},
+  {"event_id": "e16", "user": "svc.backup", "timestamp": "2026-07-09T14:06:00Z", "action": "read", "resource": "file-011", "host": "fileserver-1"},
+  {"event_id": "e17", "user": "svc.backup", "timestamp": "2026-07-09T14:06:30Z", "action": "read", "resource": "file-012", "host": "fileserver-1"},
+  {"event_id": "e18", "user": "svc.backup", "timestamp": "2026-07-09T14:07:00Z", "action": "read", "resource": "file-013", "host": "fileserver-1"},
+  {"event_id": "e19", "user": "svc.backup", "timestamp": "2026-07-09T14:07:30Z", "action": "read", "resource": "file-014", "host": "fileserver-1"},
+  {"event_id": "e20", "user": "svc.backup", "timestamp": "2026-07-09T14:08:00Z", "action": "read", "resource": "file-015", "host": "fileserver-1"}
+]

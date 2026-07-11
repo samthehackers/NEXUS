@@ -1,0 +1,7 @@
+{
+  "ips": {
+    "45.10.0.9": {"reputation": "malicious", "description": "Known VPN exit node associated with credential-stuffing campaigns"}
+  },
+  "domains": {},
+  "hashes": {}
+}

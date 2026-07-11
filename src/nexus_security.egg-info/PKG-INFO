@@ -1,3 +1,34 @@
+Metadata-Version: 2.4
+Name: nexus-security
+Version: 0.1.0
+Summary: AI-powered behavioral detection and attack path engine (TrustGeeks Security)
+Author: TrustGeeks Security Inc.
+License: MIT
+Keywords: security,soc,attack-graph,threat-detection,blue-team
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: typer>=0.12.0
+Requires-Dist: rich>=13.7.0
+Requires-Dist: pydantic>=2.6.0
+Requires-Dist: networkx>=3.2
+Requires-Dist: fastapi>=0.110.0
+Requires-Dist: uvicorn>=0.29.0
+Requires-Dist: python-dateutil>=2.9.0
+Requires-Dist: jinja2>=3.1.3
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0.0; extra == "dev"
+Requires-Dist: pytest-cov>=5.0.0; extra == "dev"
+Requires-Dist: httpx>=0.27.0; extra == "dev"
+Requires-Dist: fakeredis>=2.23.0; extra == "dev"
+Requires-Dist: anthropic>=0.34.0; extra == "dev"
+Requires-Dist: redis>=5.0.0; extra == "dev"
+Provides-Extra: llm
+Requires-Dist: anthropic>=0.34.0; extra == "llm"
+Provides-Extra: streaming
+Requires-Dist: redis>=5.0.0; extra == "streaming"
+Dynamic: license-file
+
 # NEXUS
 
 **AI-powered behavioral detection & attack path engine — TrustGeeks Security**
@@ -27,31 +58,10 @@ using transparent, explainable heuristics rather than a black box.
 - **Behavioral detection**: impossible travel, off-hours privileged access,
   mass resource access, privilege escalation chains — each rule is a
   readable function you can audit and extend.
-- **MITRE ATT&CK mapping**: every finding is tagged with the ATT&CK
-  technique(s) it maps to, from an explicit, hand-maintained table
-  (`nexus/intel/mitre.py`) — not an inferred/ML mapping.
-- **Composite risk scoring**: combines severity with optional CVSS
-  (from your own vuln scanner), business criticality, and attack-path
-  length into one 0-10 score with visible, fixed weights.
 - **Attack graph engine**: builds a directed graph of hosts/users/resources
   and computes ranked attack paths to critical assets using weighted
   traversal difficulty.
-- **Interactive graph visualization**: the HTML report renders the actual
-  attack graph (vis-network) — entry points, hops, and critical targets
-  color-coded — not just a path list.
-- **Threat-intel / IOC enrichment**: pluggable interface
-  (`nexus/intel/ioc.py`) with a reference static-reputation-list
-  implementation. Bring your own live feed (AbuseIPDB, VirusTotal, etc.) by
-  implementing the same interface with your API key.
-- **Streaming ingestion**: a tested Redis Streams consumer
-  (`nexus/streaming/`) for real-time log ingestion via consumer groups.
-  Kafka/RabbitMQ backends can implement the same `StreamConsumer` interface.
-- **LLM investigation summaries**: turns a raw finding + its attack-path
-  context into an analyst-readable narrative via the Anthropic API
-  (`nexus/llm/investigate.py`). Requires your own `ANTHROPIC_API_KEY` —
-  NEXUS never fabricates a summary without one.
-- **Reporting**: JSON (machine-readable) and HTML (human-readable, with
-  the interactive graph) reports.
+- **Reporting**: JSON (machine-readable) and HTML (human-readable) reports.
 - **CLI** (Typer) and a minimal **REST API** (FastAPI) for automation.
 
 ## Installation
@@ -77,22 +87,9 @@ nexus run \
   --topology src/nexus/data/sample_topology.json \
   --entry-point workstation-12 \
   --out ./nexus-report
-
-# Same, with IOC enrichment and LLM investigation summaries
-nexus run \
-  --logs src/nexus/data/sample_auth_logs.json --log-type auth \
-  --topology src/nexus/data/sample_topology.json \
-  --entry-point workstation-12 \
-  --ioc-feed src/nexus/data/sample_ioc_feed.json \
-  --llm-summary \
-  --out ./nexus-report
 ```
 
-`--llm-summary` requires `ANTHROPIC_API_KEY` in your environment. Without
-it, NEXUS skips summarization with a warning rather than fabricating one.
-
-Open `nexus-report/nexus_report.html` for the human-readable report,
-complete with an interactive attack graph.
+Open `nexus-report/nexus_report.html` for the human-readable report.
 
 ### As an API
 
@@ -124,16 +121,10 @@ detectors or swap in a statistical/ML model behind the same interface.
 
 ## Roadmap
 
-Delivered in v0.2: MITRE ATT&CK mapping, composite risk scoring (CVSS +
-business criticality + path length), interactive attack-graph
-visualization, pluggable IOC/threat-intel enrichment, a Redis Streams
-ingestion path, and LLM-powered investigation summaries.
-
-Still open: real geo-IP velocity for `impossible_travel` (currently a
-country-change heuristic), a Kafka/RabbitMQ `StreamConsumer` implementation
-for teams already running those brokers, and a live threat-intel connector
-(AbuseIPDB/VirusTotal) for anyone who wants enrichment beyond a static
-reputation list. Contributions welcome — see `CONTRIBUTING.md`.
+NEXUS v0.1 intentionally ships two modules done well (behavioral detection +
+attack graph) rather than many done shallowly. Planned next: real geo-IP
+velocity for impossible travel, pluggable ML anomaly scoring, and a
+lightweight web dashboard. Contributions welcome — see `CONTRIBUTING.md`.
 
 ## License
 

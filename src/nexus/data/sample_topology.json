@@ -1,0 +1,17 @@
+{
+  "assets": [
+    {"asset_id": "workstation-12", "kind": "host", "criticality": 1.0, "tags": ["endpoint"]},
+    {"asset_id": "jane.doe", "kind": "user", "criticality": 2.0, "tags": ["standard-user"]},
+    {"asset_id": "jump-host-1", "kind": "host", "criticality": 3.0, "tags": ["bastion"]},
+    {"asset_id": "app-server-1", "kind": "host", "criticality": 5.0, "tags": ["internal"]},
+    {"asset_id": "db-prod-01", "kind": "host", "criticality": 9.0, "tags": ["database", "pii"]},
+    {"asset_id": "backup-vault", "kind": "resource", "criticality": 8.5, "tags": ["backup"]}
+  ],
+  "edges": [
+    {"source": "workstation-12", "target": "jane.doe", "relation": "logged_in_as", "weight": 0.5},
+    {"source": "jane.doe", "target": "jump-host-1", "relation": "can_ssh", "weight": 2.0},
+    {"source": "jump-host-1", "target": "app-server-1", "relation": "can_reach", "weight": 1.5},
+    {"source": "app-server-1", "target": "db-prod-01", "relation": "has_db_credentials", "weight": 1.0},
+    {"source": "app-server-1", "target": "backup-vault", "relation": "can_write", "weight": 3.0}
+  ]
+}
